@@ -1,8 +1,10 @@
 import classes from "./ProfileForm.module.css";
 import { useRef, useContext } from "react";
 import AuthContext from "../store/auth-context";
+import { useNavigate } from "react-router-dom";
 
 const ProfileForm = () => {
+  const navigate = useNavigate();
   const newPasswordInputRef = useRef();
   const authCtx = useContext(AuthContext);
 
@@ -24,6 +26,7 @@ const ProfileForm = () => {
     )
       .then((res) => {
         console.log(res.data);
+        navigate('/')
       })
       .catch((error) => {
         console.log(error);
